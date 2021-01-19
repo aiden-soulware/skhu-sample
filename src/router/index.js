@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
+import Empty from '../views/empty.vue'
++
+  Vue.use(VueRouter)
 
 const routes = [
   {
@@ -9,6 +10,23 @@ const routes = [
     name: 'Home',
     component: () => import(/* webpackChunkName: "about" */ '../views/home.vue')
   },
+  {
+    path: '/jun',
+    component: Empty,
+    children: [
+      {
+        path: 'stopwatch',
+        name: 'jun:stopwatch',
+        component: () => import(/* webpackChunkName: "jun" */ '../views/jun/Stopwatch.vue')
+      },      
+      {
+        path: 'image',
+        name: 'jun:image',
+        component: () => import(/* webpackChunkName: "jun" */ '../views/jun/ImageEx.vue')
+      }
+    ]
+  }
+
 ]
 
 const router = new VueRouter({
