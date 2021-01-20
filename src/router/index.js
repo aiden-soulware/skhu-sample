@@ -23,6 +23,11 @@ const routes = [
         path: 'image',
         name: 'jun:image',
         component: () => import(/* webpackChunkName: "jun" */ '../views/jun/ImageEx.vue')
+      },
+      {
+        path: 'image2',
+        name: 'jun:image2',
+        component: () => import(/* webpackChunkName: "jun" */ '../views/jun/ImageEx.vue')
       }
     ]
   },

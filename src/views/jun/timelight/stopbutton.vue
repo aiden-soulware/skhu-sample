@@ -17,12 +17,19 @@
 <script>
 export default {
   props: ["time", "bulb"],
+  /* props: {
+    time : {
+      type : string,
+      require : true,
+      default : '0',
+    }
+  }, */
   data() {
     return {};
   },
   methods: {
     start() {
-      this.$emit("start")
+      this.$emit("start", 'aaaaa')
     },
     pause() {
       this.$emit("pause")

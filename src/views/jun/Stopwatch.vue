@@ -72,7 +72,8 @@ export default {
     },
   },
   methods: {
-    startbtn() {
+    startbtn(value) {
+      console.log("value", value)
       this.timer = setInterval(() => {
         this.time++;
 

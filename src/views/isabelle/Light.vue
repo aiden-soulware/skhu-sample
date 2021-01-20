@@ -1,6 +1,7 @@
 <template>
   <div class="test">
-    {{ on1 }}
+    <v-icon color="yellow" v-if="on1">mdi-lightbulb-on-outline</v-icon>
+    <v-icon v-else>mdi-lightbulb</v-icon>
   </div>
 </template>
 
