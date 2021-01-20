@@ -5,12 +5,10 @@
     <div id="timerBox" class="timerBox">
       {{ time }}
     </div>
-    <div class="btnBox">
-      <i @click="start" class="fa fa-play" aria-hidden="true"></i>
-      <i @click="pause" class="fa fa-pause" aria-hidden="true"></i>
-      <i @click="stop" class="fa fa-stop" aria-hidden="true"></i>
-
-    </div>
+    <v-icon x-large @click="start" color="blue">mdi-play</v-icon>
+    <v-icon x-large @click="pause" color="blue">mdi-play-pause</v-icon>
+    <v-icon x-large @click="stop" color="blue">mdi-stop-circle-outline</v-icon>
+  
 
   </div>
 </template>
