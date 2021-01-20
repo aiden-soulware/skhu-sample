@@ -1,7 +1,9 @@
 <template>
   <div class="test">
-    <v-icon color="yellow" v-if="on1">mdi-lightbulb-on-outline</v-icon>
-    <v-icon v-else>mdi-lightbulb</v-icon>
+    <v-icon v-if=!on1>mdi-lightbulb-on</v-icon>
+    <v-icon v-else>mdi-lightbulb-on-outline</v-icon>
+   
+  
   </div>
 </template>
 
