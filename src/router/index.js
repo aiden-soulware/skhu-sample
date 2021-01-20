@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Empty from '../views/empty.vue'
-+
-  Vue.use(VueRouter)
+
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -33,12 +33,12 @@ const routes = [
       {
         path: 'app',
         name: 'isabelle:app',
-        component: () => import(/* webpackChunkName: "jun" */ '../views/isabelle/App.vue')
+        component: () => import(/* webpackChunkName: "isabelle" */ '../views/isabelle/App.vue')
       },
       {
         path: 'site',
         name: 'isabelle:site',
-        component: () => import(/* webpackChunkName: "jun" */ '../views/isabelle/Site.vue')
+        component: () => import(/* webpackChunkName: "isabelle" */ '../views/isabelle/Site.vue')
       }
     ]
   }
