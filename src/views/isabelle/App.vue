@@ -6,13 +6,15 @@
       :recordTest="recordTest"
       :count="count"
       @click="countTime"
+      @reset="timeReset"
+      @stop="timeStop"
     />
     <div>
       <!--시작/재시작/기록 버튼-->
     </div>
     <LightVue :on1="on1" />
     <LightVue :on1="on2" />
-    <LightVue :on1="on3"/>
+    <LightVue :on1="on3" />
   </div>
 </template>
 <script>
@@ -59,7 +61,6 @@ export default {
       if (timeSec % 10 == 0) {
         this.on3 = !this.on3;
       }
-
       if (this.on1 && this.on2 && this.on3) {
         this.count++;
         this.recordTest = this.count;
@@ -67,9 +68,26 @@ export default {
       this.printTime(min, sec);
 
       if (min == 0 && sec == 10) {
-        clearInterval(this.timerStart);
+        this.timeStop();
       }
     },
+
+    timeStop() {
+      clearInterval(this.timerStart);
+    },
+
+    timeReset() {
+      this.stTime=0;
+      this.postTestMin = '00';
+      this.postTestSec = '00';
+      this.on1= false;
+      this.on2= false;
+      this.on3= false;
+      this.count=0;
+      this.recordTest=0;
+      this.timeStop();
+    },
+
     addZero(time) {
       return (time < 10 ? "0" : "") + time;
     },

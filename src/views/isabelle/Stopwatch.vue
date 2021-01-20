@@ -11,6 +11,8 @@
       <!--중간 기록할 리스트-->
     </div>
     <v-btn @click="$emit('click')">Start</v-btn>
+    <v-btn @click="$emit('reset')">Reset</v-btn>
+    <v-btn @click="$emit('stop')">STOP</v-btn>
   </div>
 </template>
 
