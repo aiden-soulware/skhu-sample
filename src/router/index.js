@@ -25,9 +25,9 @@ const routes = [
         component: () => import(/* webpackChunkName: "jun" */ '../views/jun/ImageEx.vue')
       },
       {
-        path: 'image2',
-        name: 'jun:image2',
-        component: () => import(/* webpackChunkName: "jun" */ '../views/jun/ImageEx.vue')
+        path: 'vuexex',
+        name: 'jun:vuexex',
+        component: () => import(/* webpackChunkName: "jun" */ '../views/jun/VuexEX.vue')
       }
     ]
   },
