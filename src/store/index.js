@@ -42,7 +42,13 @@ export default new Vuex.Store({
       return Math.round((getters.countOfSeoul / getters.allUsersCount) * 100);
     },
   },
-  mutations: {},
+  mutations: {
+    addUsers: (state, payload) => {
+      //payload 가져온 값을 넘겨줌
+      state.allUsers.push(payload)
+
+    }
+  },
   actions: {},
   modules: {},
 });

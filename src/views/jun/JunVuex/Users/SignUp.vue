@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import { EventBus } from "@/main.js";
-
+// import { EventBus } from '@/main.js'
+// import { mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -28,6 +28,7 @@ export default {
     };
   },
   methods: {
+    // ...mapMutations(["addUsers"]),
     signUp() {
       let userObj = {
         userId: this.userId,
@@ -36,7 +37,8 @@ export default {
         address: this.address,
         src: this.src,
       };
-      EventBus.$emit("signUp", userObj);
+      this.$store.commit('addUsers',userObj)//뮤테이션은 commit 을 써야함
+      // this.addUsers(userObj)//payload인자로 넘어감
       this.clearForm();
     },
     clearForm() {
