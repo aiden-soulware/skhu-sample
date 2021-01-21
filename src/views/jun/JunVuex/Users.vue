@@ -4,10 +4,10 @@
     <v-list-item-content>Vuex 실습공간</v-list-item-content>
     <v-layout row wrap >
       <v-flex xs6>
-        <AllUsers></AllUsers>
+        <AllUsers/>
       </v-flex>
       <v-flex xs6>
-        <SignUp></SignUp>
+        <SignUp/>
       </v-flex>
     </v-layout>
   </v-container>
