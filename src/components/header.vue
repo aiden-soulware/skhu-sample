@@ -17,6 +17,7 @@
     <v-btn :to="{name:'jun:vuexex'}">jun:vuexex</v-btn>
     <v-btn :to="{name:'isabelle:app'}">isabelle:app</v-btn>
     <v-btn :to="{name:'isabelle:site'}">isabelle:site</v-btn>
+    <v-btn :to="{name:'isabelle:promise'}">isabelle:promise</v-btn>
   </v-app-bar>
 </template>
 
