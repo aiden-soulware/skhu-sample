@@ -44,6 +44,11 @@ const routes = [
         path: 'site',
         name: 'isabelle:site',
         component: () => import(/* webpackChunkName: "isabelle" */ '../views/isabelle/Site.vue')
+      },
+      {
+        path: 'promise',
+        name: 'isabelle:promise',
+        component: () => import(/* webpackChunkName: "isabelle" */ '../views/isabelle/Promise.vue')
       }
     ]
   }
