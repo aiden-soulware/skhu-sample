@@ -1,8 +1,12 @@
 <template>
   <div>
     <h2>Image Axios</h2>
-    <button v-on:click="getData">이미지 가져오기</button>
-    <img v-bind:src="imageData" width="200px" />
+    <v-btn v-on:click="getData">이미지 가져오기</v-btn>
+    <img v-bind:src="imageData" width="700px" />
+    <br />
+    <progress value="80" max="100"></progress>
+    <br>
+    
   </div>
 </template>
 
@@ -12,11 +16,12 @@ export default {
   data() {
     return {
       imageData: null,
+      percent: 0,
     };
   },
-  
+
   methods: {
-      getData() {
+    getData() {
       let url =
         "https://images.unsplash.com/photo-1610048899906-d8f64bc45464?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format";
       let temp = this.getImageBase64(url);
@@ -30,17 +35,17 @@ export default {
         axios.get(url, { responseType: "arraybuffer" }).then(
           (response) => {
             let temp = Buffer.from(response.data, "binary").toString("base64");
-            console.log(resolve(temp))
             resolve(temp);
+            alert("이미지 불러오기 완료");
           },
           (err) => {
-            console.log(err)
+            console.log(err);
             reject(err);
           }
         );
       });
     },
-
+   
   },
 };
 </script>
