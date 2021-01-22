@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>사용자 추가 EventBus</h1>
+    <h1>사용자 추가 Vuex</h1>
     <v-text-field label="아이디" v-model="userId"></v-text-field>
     <v-text-field
       label="비밀번호"
