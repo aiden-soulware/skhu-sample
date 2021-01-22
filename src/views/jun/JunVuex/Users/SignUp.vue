@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>사용자 추가 EventBus</h1>
+    <h1>사용자 추가 Vuex</h1>
     <v-text-field label="아이디" v-model="userId"></v-text-field>
     <v-text-field
       label="비밀번호"
@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import { EventBus } from "@/main.js";
-
+// import { EventBus } from '@/main.js'
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -28,6 +28,9 @@ export default {
     };
   },
   methods: {
+    //  ...mapMutations(["addUsers"]),
+     ...mapActions(['addUsers']),
+
     signUp() {
       let userObj = {
         userId: this.userId,
@@ -36,7 +39,10 @@ export default {
         address: this.address,
         src: this.src,
       };
-      EventBus.$emit("signUp", userObj);
+      // this.$store.commit('addUsers',userObj)//뮤테이션은 commit 을 써야함
+      // this.addUsers(userObj)//payload인자로 넘어감
+      // this.$store.dispatch('addUsers',userObj)
+      this.addUsers(userObj)//dispatch 안써도댐
       this.clearForm();
     },
     clearForm() {

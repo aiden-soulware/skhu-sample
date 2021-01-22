@@ -1,9 +1,18 @@
 <template>
   <div>
-    <h1>사용자({{$store.getters.allUsersCount}})</h1>
-    
+    <h1>사용자({{ count }})</h1>
+    <h3>
+      Seoul Users:{{ seouls }}명 ({{
+      percent
+      }}%)
+    </h3>
+
     <v-list two-line>
-      <v-list-item-title v-for="(user, index) in $store.state.allUsers" :key="index" avatar>
+      <v-list-item-title
+        v-for="(user, index) in allUsers"
+        :key="index"
+        avatar
+      >
         <v-list-item-avatar size="100" color="grey lighten-3">
           <img :src="user.src"
         /></v-list-item-avatar>
@@ -21,12 +30,20 @@
 
 <script>
 import { EventBus } from "@/main.js";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   data() {
-    return {
-      
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters({
+      count:'allUsersCount',
+      seouls : 'countOfSeoul',
+      percent:'percentOfSeoul',
+    }),
+    ...mapState(['allUsers'])
+    // ...mapGetters(["allUsers", "countOfSeoul", "percentOfSeoul"]),
   },
   mounted() {
     EventBus.$on("signUp", (users) => {

@@ -29,8 +29,30 @@ export default new Vuex.Store({
     allUsersCount: (state) => {
       return state.allUsers.length;
     },
+    countOfSeoul: (state) => {
+      let count = 0;
+      state.allUsers.forEach((user) => {
+        if (user.address === "Seoul") {
+          count++;
+        }
+      });
+      return count;
+    },
+    percentOfSeoul: (state, getters) => {
+      return Math.round((getters.countOfSeoul / getters.allUsersCount) * 100);
+    },
   },
-  mutations: {},
-  actions: {},
+  mutations: {//state를 변화 시킴
+    addUsers: (state, payload) => {
+      //payload 가져온 값을 넘겨줌
+      state.allUsers.push(payload);
+    },
+  },
+  actions: {//비즈니스로직이 들어 갈 수 있음 ex) password 검사 비동기 처리 같은 로직 처리 후 
+    //commit 을 사용해 mutations에 전달
+    addUsers: ({ commit }, payload) => {
+      commit("addUsers",payload);
+    },
+  },
   modules: {},
 });
