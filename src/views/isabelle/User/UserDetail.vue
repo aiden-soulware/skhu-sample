@@ -18,16 +18,32 @@
         <v-list-item-title> 반려견 유무</v-list-item-title>
         <v-list-item-subtitle>{{ hasDogkr }}</v-list-item-subtitle>
       </v-list-item>
+       <v-list-item>
+        <v-list-item-title> 수정일자</v-list-item-title>
+        <v-list-item-subtitle>{{ editedDate }}</v-list-item-subtitle>
+      </v-list-item>
     </v-list>
   </div>
 </template>
 <script>
+import { EventBus } from "@/main.js"
 export default {
+  data(){
+    return{
+      editedDate:null
+    }
+  },
   props: ["name","address","phone","hasDog"],
   computed:{
       hasDogkr(){
           return this.hasDog === true ? '있다':'없다'
       }
+  },
+  created(){
+    EventBus.$on('userWasEdited',(date)=>{
+      this.editedDate = date
+    })//리스너의 역할,=>을 써야 this가 그대로 뷰를 가르킴
+
   }
 };
 </script>

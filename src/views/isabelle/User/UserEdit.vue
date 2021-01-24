@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { EventBus } from "@/main.js"
 export default {
   props: ["name", "address", "phone", "hasDog"],
   data(){
@@ -40,6 +41,8 @@ export default {
   methods:{
       changeUser(){
           this.$emit("child",this.user)
+          //EventBus.$emit("userWasEdited",new Date())//eventbus인스턴스가 부모 컴포넌트 역할
+      EventBus.userWasEdited(new Date())
       }
   }
 
