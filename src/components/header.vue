@@ -21,6 +21,7 @@
     <v-btn :to="{name:'isabelle:promise'}">isabelle:promise</v-btn>
     <v-btn :to="{name:'isabelle:user'}">isabelle:user</v-btn>
     <v-btn :to="{name:'isabelle:users'}">isabelle:users</v-btn>
+    <v-btn :to="{name:'isabelle:image'}">isabelle:image</v-btn>
   </v-app-bar>
 </template>
 

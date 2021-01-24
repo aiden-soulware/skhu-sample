@@ -64,6 +64,11 @@ const routes = [
         path: 'users',
         name: 'isabelle:users',
         component: () => import(/* webpackChunkName: "isabelle" */ '../views/isabelle/Users/Users.vue')
+      },
+      {
+        path: 'image',
+        name: 'isabelle:image',
+        component: () => import(/* webpackChunkName: "isabelle" */ '../views/isabelle/services/Image.vue')
       }
     ]
   }
