@@ -103,7 +103,7 @@ export default {
       })
         .then((response) => {
           let prevMessage = this.message ? this.message + "\n" : "";
-          console.log(prevMessage)
+      
           this.message = prevMessage + response.data.message;
 
           return UploadService.getFiles();
