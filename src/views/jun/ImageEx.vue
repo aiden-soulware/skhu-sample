@@ -49,7 +49,7 @@ export default {
                 "base64"
               );
               resolve(temp);
-              alert("이미지 불러오기 완료");
+              // alert("이미지 불러오기 완료");
             },
             (err) => {
               console.log(err);
