@@ -2,8 +2,7 @@
   <v-app>
     <v-container fluid style="width: 600px">
       <div class="mb-5">
-        <h1>bezkoder.com</h1>
-        <h2>Vuetify multiple Images upload</h2>
+      <h1>이미지 프로그레스바</h1>
       </div>
 
       <upload-images></upload-images>

@@ -9,7 +9,7 @@ class UploadFilesService {
     formData.append("file", file);
     console.log(formData);
     return axios
-      .post('/jun/ImageApp/', formData, {
+      .post('/upload', formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -24,7 +24,7 @@ class UploadFilesService {
   }
 
   getFiles() {
-    return axios.get('/jun/ImageApp/');
+    return axios.get('/files');
   }
 }
 

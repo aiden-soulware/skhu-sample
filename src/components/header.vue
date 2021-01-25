@@ -16,7 +16,7 @@
     <v-btn :to="{name:'jun:image'}">jun:image</v-btn>
     <v-btn :to="{name:'jun:vuexex'}">jun:vuexex</v-btn>
     <v-btn :to="{name:'jun:ImageApp'}">jun:ImageApp</v-btn>
-    <v-btn :to="{name:'jun:ImageApp2'}">jun:ImageApp2</v-btn>
+     <v-btn :to="{name:'jun:ImageApp2'}">jun:ImageApp2</v-btn>
     <v-btn :to="{name:'isabelle:app'}">isabelle:app</v-btn>
     <v-btn :to="{name:'isabelle:site'}">isabelle:site</v-btn>
     <v-btn :to="{name:'isabelle:promise'}">isabelle:promise</v-btn>
