@@ -29,7 +29,9 @@ export default {
   },
   methods: {
     //  ...mapMutations(["addUsers"]),
-     ...mapActions(['addUsers']),
+     ...mapActions({
+       addUsers : 'jUsers/addUsers'
+     }),
 
     signUp() {
       let userObj = {

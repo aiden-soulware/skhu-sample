@@ -33,11 +33,14 @@ import {mapState,mapGetters} from 'vuex'
     },
     computed:{
       ...mapGetters({
-        count:'allUsersCount',
-        seouls:'countOfSeoul',
-        percent:'percentOfSeoul'
+        count:'iUsers/allUsersCount',
+        seouls:'iUsers/countOfSeoul',
+        percent:'iUsers/percentOfSeoul'
       }),
-      ...mapState(['allUsers'])
+      //...mapState(['allUsers'])
+      ...mapState({
+        allUsers: state => state.iUsers.allUsers
+      })
       //...mapGetters(['allUsersCount','countOfSeoul','percentOfSeoul'])
     },
     mounted() {

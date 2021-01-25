@@ -42,7 +42,9 @@ import { mapActions } from 'vuex'
     },
     methods: {
      // ...mapMutations(['addUsers']),
-     ...mapActions(['addUsers']),
+     ...mapActions({
+       addUsers : 'iUsers/addUsers'}
+      ),
       signUp() {
         let userObj = {
           userId: this.userId,

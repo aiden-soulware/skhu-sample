@@ -38,11 +38,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      count:'allUsersCount',
-      seouls : 'countOfSeoul',
-      percent:'percentOfSeoul',
+      count:'jUsers/allUsersCount',
+      seouls : 'jUsers/countOfSeoul',
+      percent:'jUsers/percentOfSeoul',
     }),
-    ...mapState(['allUsers'])
+    ...mapState({
+        allUsers: state => state.jUsers.allUsers
+      })
     // ...mapGetters(["allUsers", "countOfSeoul", "percentOfSeoul"]),
   },
   mounted() {
