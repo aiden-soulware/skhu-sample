@@ -29,7 +29,7 @@ export default {
 
   methods: {
     ...mapActions({
-      getImageItem: 'junImage/getImageItem'
+      getImageItem: "junImage/getImageItem",
     }),
 
     getData() {
@@ -53,7 +53,6 @@ export default {
 
         temp.then((data) => {
           this.getImageItem("data:image/png;base64," + data);
-console.log(this.imageItem) 
           this.uploadPercentage += 100 / url.length;
         });
       }
@@ -68,13 +67,6 @@ console.log(this.imageItem)
         axios
           .get(url, {
             responseType: "arraybuffer",
-
-            onUploadProgress: function(progressEvent) {
-              this.uploadPercentage = parseInt(
-                Math.round((progressEvent.loaded / progressEvent.total) * 100)
-              );
-              console.log(this.uploadPercentage);
-            }.bind(this),
           })
           .then(
             (response) => {
