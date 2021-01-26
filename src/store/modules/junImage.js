@@ -23,7 +23,8 @@ const actions = {
   getImageItem: ({ commit }, payload) => {
     commit("imageItem", payload);
   },
-  getImageBase64 : (url)=> {
+  getImageBase64 : (state,url)=> {
+   console.log(url)
     return new Promise((resolve, reject) => {
       axios
         .get(url, {

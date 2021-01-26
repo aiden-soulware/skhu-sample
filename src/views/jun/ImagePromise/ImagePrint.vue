@@ -37,6 +37,7 @@ export default {
       
       let temp;
       for (var i = 0; i < this.url.length; i++) {
+        
         temp = this.getImageBase64(this.url[i]);//actions call
         this.promiseArray.push(temp);
 
