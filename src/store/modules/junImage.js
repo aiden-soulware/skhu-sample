@@ -1,7 +1,28 @@
 import axios from "axios";
+
+const getImageBase64 = (url) => {
+  console.log(url);
+  return new Promise((resolve, reject) => {
+    axios
+      .get(url, {
+        responseType: "arraybuffer",
+      })
+      .then(
+        (response) => {
+          let temp = Buffer.from(response.data, "binary").toString("base64");
+          resolve(temp);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+  });
+};
+
 const state = {
   items: [],
-  url : [
+  url: [
     "https://images.unsplash.com/photo-1610048899906-d8f64bc45464?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format",
     "https://images.unsplash.com/photo-1610048899906-d8f64bc45464?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format",
     "https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_319/112_%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
@@ -13,36 +34,55 @@ const state = {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkPId4Hjm02Db3jqaXTn6UpzZzVfJB7I8lUw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1cCPc3QZCzUKtoh9rdC5WTfLegbi26jvMmA&usqp=CAU",
   ],
+  uploadPercentage: 0,
 };
-const getters = {
-  
-};
+const getters = {};
 const actions = {
   //비즈니스로직이 들어 갈 수 있음 ex) password 검사 비동기 처리 같은 로직 처리 후
   //commit 을 사용해 mutations에 전달
   getImageItem: ({ commit }, payload) => {
     commit("imageItem", payload);
   },
-  getImageBase64 : (state,url)=> {
-   console.log(url)
-    return new Promise((resolve, reject) => {
-      axios
-        .get(url, {
-          responseType: "arraybuffer",
-        })
-        .then(
-          (response) => {
-            let temp = Buffer.from(response.data, "binary").toString(
-              "base64"
-            );
-            resolve(temp);
-          },
-          (err) => {
-            console.log(err);
-            reject(err);
-          }
-        );
-    });
+  // getImageBase64: (state, url) => {
+  //   console.log(url);
+  //   return new Promise((resolve, reject) => {
+  //     axios
+  //       .get(url, {
+  //         responseType: "arraybuffer",
+  //       })
+  //       .then(
+  //         (response) => {
+  //           let temp = Buffer.from(response.data, "binary").toString("base64");
+  //           resolve(temp);
+  //         },
+  //         (err) => {
+  //           console.log(err);
+  //           reject(err);
+  //         }
+  //       );
+  //   });
+  // },
+  fetchImage({ commit }, urls) {
+    /*  let promiseArray = urls.map(v=>{
+      let p = getImageBase64(v)
+      p.then(data=> {
+        commit('addImageItem', data)
+      })
+      return p;
+    }) */
+
+    /*     v => {
+      v++
+      return v;
+    }
+    v => v+1 */
+    return Promise.all(
+      urls.map((url) =>
+        getImageBase64(url).then((data) => commit("addImageItem", data))
+      ).then(
+        commit("addPercent")
+      )
+    );
   },
 };
 
@@ -52,6 +92,15 @@ const mutations = {
     //payload 가져온 값을 넘겨줌
     state.items.push(payload);
   },
+  addImageItem: (state, payload) => {
+    //state.items.push("data:image/png;base64,"+payload);
+    state.items = [...state.items, "data:image/png;base64," + payload];
+    
+  },
+  addPercent:(state)=>{
+    
+    console.log(state.uploadPercentage)
+  }
 };
 
 export default {
